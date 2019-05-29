@@ -329,7 +329,7 @@ open class BotAdminVerticle : AdminVerticle() {
             i18n.save(labels.filter { it.namespace == context.organization })
         }
 
-        blockingJsonPost("/i18n/save", botUser) { context, label: I18nLabel ->
+        blockingJsonPost("/i18n/saveTestPlan", botUser) { context, label: I18nLabel ->
             if (label.namespace == context.organization) {
                 i18n.save(label)
             } else {
@@ -395,7 +395,7 @@ open class BotAdminVerticle : AdminVerticle() {
         blockingJsonGet("/xray/available", botUser) {
             XrayConfiguration.isXrayAvailable()
         }
-
+/*
         blockingJsonPost("/xray/execute", botUser) { context, configuration: XRayPlanExecutionConfiguration ->
             XrayService(
                 listOfNotNull(configuration.configurationId),
@@ -403,7 +403,7 @@ open class BotAdminVerticle : AdminVerticle() {
                 configuration.testedBotId
             ).executePlans(context.organization)
         }
-
+*/
         configureStaticHandling()
     }
 
